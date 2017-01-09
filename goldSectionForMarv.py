@@ -130,6 +130,7 @@ def play_wav(wav):
     pygame.mixer.init()
     song = pygame.mixer.Sound(wav)
     song.play()
+    while pygame.mixer.get_busy():
 
 def run_trial(trial):
     for i in trial:
