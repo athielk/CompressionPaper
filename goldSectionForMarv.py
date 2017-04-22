@@ -126,7 +126,10 @@ def step(queue):
 
 def play_wav(wav):
     print wav
+    pygame.mixer.pre_init(44100,16,2,4096)
     pygame.mixer.init()
+    #pygame.mixer.music.load(wav)
+    #pygame.mixer.music.play()
     song = pygame.mixer.Sound(wav)
     song.play()
     while pygame.mixer.get_busy():
@@ -149,4 +152,5 @@ def run_trial(trial):
                     return run_trial(trial)
 
 if __name__ == "__main__":
+
     run()
