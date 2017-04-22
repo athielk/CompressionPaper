@@ -105,10 +105,8 @@ def run():
     pygame.display.set_mode((100, 100))
     queue1 = golden_section_queue(glob.glob('bush*.wav'), 'bushOffersPeace.wav')
     queue2 = golden_section_queue(glob.glob('bush*.wav'), 'bushOffersPeace.wav')
-    queue3 = golden_section_queue(glob.glob('bush*.wav'), 'bushOffersPeace.wav')
-    queue4 = golden_section_queue(glob.glob('bush*.wav'), 'bushOffersPeace.wav')
 
-    mixed=mixed_queue([queue1,queue2,queue3,queue4])
+    mixed=mixed_queue([queue1,queue2])
 
     while mixed.complete==False:
         step(mixed)
@@ -127,10 +125,12 @@ def step(queue):
         queue.update(result)
 
 def play_wav(wav):
+    print wav
     pygame.mixer.init()
     song = pygame.mixer.Sound(wav)
     song.play()
     while pygame.mixer.get_busy():
+        time.sleep(1)
 
 def run_trial(trial):
     for i in trial:
